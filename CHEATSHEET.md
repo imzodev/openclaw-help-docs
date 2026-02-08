@@ -1,6 +1,4 @@
-¡Por supuesto! Aquí tienes una cheatsheet con los comandos más comunes para gestionar tu instalación de OpenClaw. Guárdala a mano para consultas rápidas.
-
-> **Nota:** Todos los comandos se deben ejecutar desde el directorio del proyecto: `cd /home/openclaw`
+> **Nota:** Todos los comandos se deben ejecutar desde el directorio del proyecto: `cd /home/openclaw` o donde hayas configurado el proyecto.
 
 ---
 
