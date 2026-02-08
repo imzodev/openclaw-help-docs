@@ -72,6 +72,24 @@ docker compose exec -it openclaw-gateway node dist/index.js channels add --chann
 docker compose exec -it openclaw-gateway node dist/index.js channels login --channel whatsapp --token=TU_TOKEN_DE_GATEWAY
 ```
 
+### Iniciar sesión con cuenta específica de WhatsApp
+```bash
+# Reemplaza "ACCOUNT_ID" y "TU_TOKEN_DE_GATEWAY"
+docker compose exec -it openclaw-gateway node dist/index.js channels login --channel whatsapp --account ACCOUNT_ID --token=TU_TOKEN_DE_GATEWAY
+```
+
+### Cerrar sesión de WhatsApp
+```bash
+# Reemplaza "TU_TOKEN_DE_GATEWAY"
+docker compose exec -it openclaw-gateway node dist/index.js channels logout --channel whatsapp --token=TU_TOKEN_DE_GATEWAY
+```
+
+### Cerrar sesión de cuenta específica de WhatsApp
+```bash
+# Reemplaza "ACCOUNT_ID" y "TU_TOKEN_DE_GATEWAY"
+docker compose exec -it openclaw-gateway node dist/index.js channels logout --channel whatsapp --account ACCOUNT_ID --token=TU_TOKEN_DE_GATEWAY
+```
+
 ---
 
 ## 🔐 Gestión de Dispositivos (Emparejamiento)
@@ -91,6 +109,34 @@ docker compose exec -it openclaw-gateway node dist/index.js devices list --token
 ```bash
 # Reemplaza "REQUEST_ID" y "TU_TOKEN_DE_GATEWAY"
 docker compose exec -it openclaw-gateway node dist/index.js devices approve REQUEST_ID --token=TU_TOKEN_DE_GATEWAY
+```
+
+### Aprobar emparejamiento de WhatsApp
+```bash
+# Reemplaza "CODIGO" y "TU_TOKEN_DE_GATEWAY"
+docker compose exec -it openclaw-gateway node dist/index.js pairing approve whatsapp CODIGO --token=TU_TOKEN_DE_GATEWAY
+```
+
+---
+
+## 🤖 Configuración de Proveedores de Modelos
+
+### Configurar Z.AI como proveedor
+```bash
+# Configuración interactiva
+docker compose exec -it openclaw-gateway node dist/index.js onboard --auth-choice zai-api-key --token=TU_TOKEN_DE_GATEWAY
+
+# Configuración no interactiva
+docker compose exec -it openclaw-gateway node dist/index.js onboard --zai-api-key "TU_ZAI_API_KEY" --token=TU_TOKEN_DE_GATEWAY
+```
+
+### Configurar OpenAI como proveedor
+```bash
+# Configuración interactiva
+docker compose exec -it openclaw-gateway node dist/index.js onboard --auth-choice openai-api-key --token=TU_TOKEN_DE_GATEWAY
+
+# Configuración no interactiva
+docker compose exec -it openclaw-gateway node dist/index.js onboard --openai-api-key "TU_OPENAI_API_KEY" --token=TU_TOKEN_DE_GATEWAY
 ```
 
 ---
@@ -115,4 +161,12 @@ docker compose exec -it openclaw-gateway node dist/index.js [COMANDO] [ARGUMENTO
 *   Obtener un enlace al dashboard con token:
     ```bash
     docker compose exec -it openclaw-gateway node dist/index.js dashboard --no-open --token=TU_TOKEN_DE_GATEWAY
+    ```
+*   Añadir un nuevo agente:
+    ```bash
+    docker compose exec -it openclaw-gateway node dist/index.js agents add NOMBRE_AGENTE --token=TU_TOKEN_DE_GATEWAY
+    ```
+*   Ejecutar diagnóstico del sistema:
+    ```bash
+    docker compose exec -it openclaw-gateway node dist/index.js doctor --token=TU_TOKEN_DE_GATEWAY
     ```
